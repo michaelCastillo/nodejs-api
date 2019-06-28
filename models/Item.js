@@ -1,9 +1,9 @@
 
 const mongoose = require('mongoose');
-var ArticleSchema = new mongoose.Schema({
+var ItemSchema = new mongoose.Schema({
     name: String,
     category: String,
     price: Number,
 })
 
-module.exports = mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Item', ItemSchema);

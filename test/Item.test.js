@@ -1,5 +1,5 @@
 var app =  require('../app');
-var Article = require('../models/Article')
+var Item = require('../models/Item')
 const assert = require('assert');
 
 
@@ -9,26 +9,26 @@ const testingValues = [
     {name:"Jabón", price:4000, category:"baño"}
 ]
 
-describe('Articles', ()=>{
+describe('Artículos', ()=>{
 
     describe('Creación', () =>{
 
         beforeEach((done)=>{
             //Se borran todos los documentos
-            Article.deleteMany({}).then(async ()=>{
+            Item.deleteMany({}).then(async ()=>{
                 for(let i = 0; i<testingValues.length; i++){
-                    let article = new Article(testingValues[i])
-                    await article.save()
+                    let item = new Item(testingValues[i])
+                    await item.save()
                 }
                 done();
             })
         })
 
         it('Crear un artículo', (done)=>{
-            var article = new Article({name:"test"})
-            article.save()
+            var item = new Item({name:"test"})
+            item.save()
             .then(res =>{
-                Article.findOne({name:'test'})
+                Item.findOne({name:'test'})
                     .then(res => {
                         assert(res.name == 'test');
                         done();
@@ -40,8 +40,8 @@ describe('Articles', ()=>{
         })
 
         it('Validando creación de articulos, deben ser tres.', (done) =>{
-            let articles;
-            Article.find({})
+            let items;
+            Item.find({})
             .exec()
             .then((results) =>{
                 assert(results.length === 3);

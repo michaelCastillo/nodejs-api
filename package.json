@@ -4,7 +4,7 @@
   "description": "App para prueba solicitada para postulacion a rockketlabs",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/Articles.test.js --exit",
+    "test": "mocha ./test/Item.test.js --exit",
     "start": "node ./app.js",
     "runsc": "nodemon ./app.js localhost 9000"
   },

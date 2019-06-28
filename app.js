@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require("body-parser");
-var Article = require('./models/Article');
+var Item = require('./models/Item');
 const app = express();
 
 //Para usos de mensajes
@@ -19,15 +19,14 @@ const API_PORT = 9000;
 mongoose.connect(`${URI}`, {useNewUrlParser: true});
 
 //Servicios
-
 app.get('/', async (req,res)=>{
     console.log("First service! ");
     res.status(200).sendFile(__dirname + "/PresentationFile.html")
 })
 
 // Servicio de obtención de todos los articulos
-app.get('/articles' , async (req,res)=>{
-    Article.find()
+app.get('/items' , async (req,res)=>{
+    Item.find()
     .exec()
     .then((result) =>{
         res.status(200).send(result)
@@ -38,11 +37,11 @@ app.get('/articles' , async (req,res)=>{
         })
     })
 })
-
-app.post('/articles',async (req, res) =>{
+//Servicio de creación de artículos.
+app.post('/items',async (req, res) =>{
     let {name} = req.body;
-    let article = new Article({name:name});
-    article.save().then(result =>{
+    let item = new Item({name:name});
+    item.save().then(result =>{
         console.log("Exito! ")
         res.status(200).send({
             message:"Articulo guardado"
