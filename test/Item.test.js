@@ -1,5 +1,5 @@
 var app =  require('../app');
-var Item = require('../models/Item')
+var Item = require('../models/Item');
 const assert = require('assert');
 
 
@@ -17,15 +17,15 @@ describe('Artículos', ()=>{
             //Se borran todos los documentos
             Item.deleteMany({}).then(async ()=>{
                 for(let i = 0; i<testingValues.length; i++){
-                    let item = new Item(testingValues[i])
-                    await item.save()
+                    let item = new Item(testingValues[i]);
+                    await item.save();
                 }
                 done();
             })
         })
 
         it('Crear un artículo', (done)=>{
-            var item = new Item({name:"test"})
+            var item = new Item({name:"test"});
             item.save()
             .then(res =>{
                 Item.findOne({name:'test'})
@@ -33,7 +33,7 @@ describe('Artículos', ()=>{
                         assert(res.name == 'test');
                         done();
                 }).catch(e=>{
-                    console.log(e)
+                    console.log(e);
                     done();
                 })
             })
@@ -46,15 +46,15 @@ describe('Artículos', ()=>{
             .then((results) =>{
                 assert(results.length === 3);
                 results.forEach((el,index) =>{
-                    assert(el.name == testingValues[index].name)
-                    assert(el.price == testingValues[index].price)
-                    assert(el.category == testingValues[index].category)
+                    assert(el.name == testingValues[index].name);
+                    assert(el.price == testingValues[index].price);
+                    assert(el.category == testingValues[index].category);
                 })
                 done();
 
             })
             .catch(e =>{
-                console.log(e)
+                console.log(e);
                 done();
             })
         })
@@ -63,13 +63,13 @@ describe('Artículos', ()=>{
             Item.findOne({name: testingValues[0].name})
             .exec()
             .then((result) =>{
-                assert(result.name == testingValues[0].name)
-                assert(result.price == testingValues[0].price)
-                assert(result.category ==  testingValues[0].category )
+                assert(result.name == testingValues[0].name);
+                assert(result.price == testingValues[0].price);
+                assert(result.category ==  testingValues[0].category );
                 done();
             })
             .catch(e =>{
-                console.log(e)
+                console.log(e);
                 done();
             })
         })
