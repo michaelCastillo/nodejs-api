@@ -15,6 +15,9 @@
 # Ejecución
 ###  Ejecución del servidor
 - **npm start**
+
+La aplicación por defecto comienza a correr en el puerto 9000, si desea cambiarlo ubique el archivo package.js y cambie el script "start"
+
 ### Ejecución de los tests
 - **npm test**
 ### Ejecución del servidor para desarrollo
