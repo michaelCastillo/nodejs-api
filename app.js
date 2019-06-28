@@ -37,7 +37,6 @@ app.get('/articles' , async (req,res)=>{
             message: `Error al obtener los articulos, ${e}`
         })
     })
-    
 })
 
 app.post('/articles',async (req, res) =>{
