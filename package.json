@@ -1,0 +1,30 @@
+{
+  "name": "nodetask",
+  "version": "1.0.0",
+  "description": "App para prueba solicitada para postulacion a rockketlabs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/Articles.test.js --exit",
+    "start": "node ./app.js",
+    "runsc": "nodemon ./app.js localhost 9000"
+  },
+  "keywords": [
+    "nodejs",
+    "api",
+    "rest",
+    "express"
+  ],
+  "author": "MichaelCastillo",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "mocha": "^6.1.4",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.1"
+  }
+}
