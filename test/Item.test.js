@@ -58,5 +58,20 @@ describe('Artículos', ()=>{
                 done();
             })
         })
+
+        it('Obtención de un articulo', (done)=>{
+            Item.findOne({name: testingValues[0].name})
+            .exec()
+            .then((result) =>{
+                assert(result.name == testingValues[0].name)
+                assert(result.price == testingValues[0].price)
+                assert(result.category ==  testingValues[0].category )
+                done();
+            })
+            .catch(e =>{
+                console.log(e)
+                done();
+            })
+        })
     })
 })

@@ -19,13 +19,13 @@ const API_PORT = 9000;
 mongoose.connect(`${URI}`, {useNewUrlParser: true});
 
 //Servicios
-app.get('/', async (req,res)=>{
+app.get('/', (req,res)=>{
     console.log("First service! ");
     res.status(200).sendFile(__dirname + "/PresentationFile.html")
 })
 
 // Servicio de obtención de todos los articulos
-app.get('/items' , async (req,res)=>{
+app.get('/items' , (req,res)=>{
     Item.find()
     .exec()
     .then((result) =>{
@@ -37,8 +37,20 @@ app.get('/items' , async (req,res)=>{
         })
     })
 })
+
+app.get('/items/:name', (req,res) =>{
+    Item.findOne({name:req.params.name})
+    .exec()
+    .then(result =>{
+        res.status(200).send(result)
+    })
+    .catch(e => res.status(500).send({
+        message:`Error al obtener el artículo ${e}`
+    }))
+})
+
 //Servicio de creación de artículos.
-app.post('/items',async (req, res) =>{
+app.post('/items',(req, res) =>{
     let {name} = req.body;
     let item = new Item({name:name});
     item.save().then(result =>{
@@ -52,6 +64,7 @@ app.post('/items',async (req, res) =>{
         })
     })
 })
+
 
 
 
