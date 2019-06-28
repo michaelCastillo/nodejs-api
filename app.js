@@ -33,7 +33,7 @@ app.get('/items' , (req,res)=>{
     })
     .catch(e => {
         callback.status(500).send({
-            message: `Error al obtener los articulos, ${e}`;
+            message: `Error al obtener los articulos, ${e}`
         })
     })
 })
